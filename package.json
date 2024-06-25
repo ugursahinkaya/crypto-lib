@@ -1,5 +1,5 @@
 {
-  "name": "@ugursahinkaya/crypto",
+  "name": "@ugursahinkaya/crypto-lib",
   "type": "module",
   "version": "0.0.1",
   "publishConfig": {
@@ -12,12 +12,12 @@
     "Uğur Şahinkaya <ugur@sahinkaya.xyz>",
     "Yusuf Kandemir <yusuf.kandemir@outlook.com.tr>"
   ],
-  "homepage": "https://github.com/ugursahinkaya/crypto#readme",
+  "homepage": "https://github.com/ugursahinkaya/crypto-lib#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ugursahinkaya/crypto.git"
+    "url": "git+https://github.com/ugursahinkaya/crypto-lib.git"
   },
-  "bugs": "https://github.com/ugursahinkaya/crypto/issues",
+  "bugs": "https://github.com/ugursahinkaya/crypto-lib/issues",
   "keywords": [],
   "exports": {
     ".": {
