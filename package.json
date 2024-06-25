@@ -1,0 +1,55 @@
+{
+  "name": "@ugursahinkaya/crypto",
+  "type": "module",
+  "version": "0.0.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "license": "UNLICENSED",
+  "description": "",
+  "author": "Uğur Şahinkaya <ugur@sahinkaya.xyz>",
+  "contributors": [
+    "Uğur Şahinkaya <ugur@sahinkaya.xyz>",
+    "Yusuf Kandemir <yusuf.kandemir@outlook.com.tr>"
+  ],
+  "homepage": "https://github.com/ugursahinkaya/crypto#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ugursahinkaya/crypto.git"
+  },
+  "bugs": "https://github.com/ugursahinkaya/crypto/issues",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "packageManager": "pnpm@9.3.0",
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint  --fix",
+    "build": "tsc -p tsconfig.build.json && terser ./dist/index.js -o ./dist/index.js --compress --mangle"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "terser": "^5.31.1"
+  }
+}

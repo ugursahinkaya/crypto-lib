@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false, // Required with composite
+    "outDir": "/dev/null", // To avoid "Cannot write file '....' because it would overwrite input file" errors
+    "allowJs": true,
+    "lib": ["ESNext", "dom"],
+    "types": ["node"]
+  },
+  "exclude": ["./dist"]
+}
