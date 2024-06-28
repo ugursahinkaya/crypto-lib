@@ -24,7 +24,10 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
-  "exclude": ["./dist"],
+  "exclude": ["node_modules", "dist"],
+  "paths": {
+    "@ugursahinkaya/*": ["../*"]
+  },
   "references": [
     {
       "path": "./tsconfig.config.json"

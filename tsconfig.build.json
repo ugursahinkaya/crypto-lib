@@ -4,6 +4,5 @@
     "sourceMap": false,
     "declaration": true,
     "allowJs": true
-  },
-  "exclude": ["./dist"]
+  }
 }

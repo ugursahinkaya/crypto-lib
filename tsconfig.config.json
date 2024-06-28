@@ -7,6 +7,5 @@
     "allowJs": true,
     "lib": ["ESNext", "dom"],
     "types": ["node"]
-  },
-  "exclude": ["./dist"]
+  }
 }
