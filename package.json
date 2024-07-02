@@ -5,10 +5,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "license": [
-    "GPL-3.0-only",
-    "Commercial"
-  ],
+  "license": "GPL-3.0-only",
   "description": "",
   "author": "Uğur Şahinkaya <ugur@sahinkaya.xyz>",
   "contributors": [
