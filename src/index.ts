@@ -96,7 +96,6 @@ export class CryptoLib {
     );
 
     this.keyMap.set(`${consumer}SCR`, newSecret);
-
     return newSecret;
   }
 
