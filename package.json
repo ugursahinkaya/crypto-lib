@@ -1,7 +1,7 @@
 {
   "name": "@ugursahinkaya/crypto-lib",
   "type": "module",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "license": "GPL-3.0 or Commerical",
   "description": "",
   "author": "Uğur Şahinkaya <ugur@sahinkaya.xyz>",
@@ -41,18 +41,17 @@
   ],
   "packageManager": "pnpm@9.3.0",
   "scripts": {
-    "format": "prettier --write .",
     "lint": "eslint  --fix",
     "build": "rollup -c"
   },
   "devDependencies": {
-    "@rollup/plugin-replace": "^5.0.7",
+    "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
-    "prettier": "^3.3.2",
-    "rollup": "^4.18.0",
-    "rollup-plugin-dts": "^6.1.1",
+    "@types/node": "^24.1.0",
+    "rollup": "^4.45.1",
+    "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-typescript2": "^0.36.0",
-    "typescript": "5.5.2"
+    "typescript": "5.8.3"
   },
   "engines": {
     "node": "18"

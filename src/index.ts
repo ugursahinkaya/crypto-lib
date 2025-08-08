@@ -82,12 +82,13 @@ export class CryptoLib {
       ["deriveKey"]
     );
 
+    const saltBuffer = new Uint8Array(salt);
     const newSecret = await this.crypto.subtle.deriveKey(
       {
         name: "HKDF",
         hash: { name: "SHA-256" },
-        salt: salt,
-        info: salt
+        salt: saltBuffer,
+        info: saltBuffer
       },
       keyMaterial,
       { name: "AES-GCM", length: 256 },
@@ -185,7 +186,7 @@ export class CryptoLib {
     );
 
     if (b64) {
-      return this.arrayBufferToBase64(this.mergeBuffers(iv, ciphertext));
+      return this.arrayBufferToBase64(this.mergeBuffers(iv.buffer, ciphertext));
     }
 
     return [ciphertext, iv];
