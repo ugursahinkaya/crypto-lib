@@ -23,7 +23,7 @@ export class CryptoLib {
     return result.buffer;
   }
 
-  prepareBuffer(buffer: ArrayBufferLike) {
+  prepareBuffer(buffer: ArrayBuffer) {
     const length = buffer.byteLength;
     const data = new Uint8Array(buffer.slice(12, length));
     const tag = new Uint8Array(buffer.slice(length - 16, length));
@@ -48,6 +48,11 @@ export class CryptoLib {
     return this.keyMap.get(`${consumer}SCR`) ? true : false;
   }
 
+  clearSecret(consumer: string) {
+    this.keyMap.delete(`${consumer}SCR`);
+    this.keyMap.delete(`${consumer}PBL`);
+  }
+
   base64ToArrayBuffer(base64: string) {
     const binaryString = atob(base64);
     const len = binaryString.length;
@@ -67,7 +72,7 @@ export class CryptoLib {
     return btoa(binaryString);
   }
 
-  async setSecretSalt(consumer: string, salt: ArrayBufferLike) {
+  async setSecretSalt(consumer: string, salt: ArrayBuffer) {
     const secret = this.keyMap.get(`${consumer}SCR`);
     if (!secret) {
       return;
@@ -118,6 +123,41 @@ export class CryptoLib {
       throw new Error("KeyOwner has not public key");
     }
     return await this.crypto.subtle.exportKey("spki", publicKey);
+  }
+
+  async exportPrivateKey(consumer: Consumer) {
+    const privateKey = this.keyMap.get(`${consumer}PRV`);
+    if (!privateKey) {
+      throw new Error("KeyOwner has not private key");
+    }
+    return await this.crypto.subtle.exportKey("pkcs8", privateKey);
+  }
+
+  async importKeypair(privateKeyData: ArrayBuffer, publicKeyData: ArrayBuffer, consumer: Consumer) {
+    const privateKey = await this.crypto.subtle.importKey(
+      "pkcs8",
+      privateKeyData,
+      {
+        name: "ECDH",
+        namedCurve: "P-256"
+      },
+      true,
+      ["deriveKey"]
+    );
+
+    const publicKey = await this.crypto.subtle.importKey(
+      "spki",
+      publicKeyData,
+      {
+        name: "ECDH",
+        namedCurve: "P-256"
+      },
+      true,
+      []
+    );
+
+    this.keyMap.set(`${consumer}PRV`, privateKey);
+    this.keyMap.set(`${consumer}PBL`, publicKey);
   }
 
   async importPublicKey(publicKeyData: BufferSource, consumer: Consumer) {
